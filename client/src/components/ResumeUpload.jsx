@@ -1,12 +1,49 @@
 import { useState } from "react";
+import API from "../services/api";
 
 function ResumeUpload() {
+  const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleFileChange = (e) => {
-    if (e.target.files.length > 0) {
-      setFileName(e.target.files[0].name);
+    const selected = e.target.files[0];
+
+    if (!selected) return;
+
+    setFile(selected);
+    setFileName(selected.name);
+    setMessage("");
+  };
+
+  const uploadResume = async () => {
+    if (!file) {
+      alert("Please choose a PDF first.");
+      return;
     }
+
+    const formData = new FormData();
+    formData.append("resume", file);
+
+    try {
+  setLoading(true);
+
+  const res = await API.post("/upload-resume", formData);
+
+  setMessage(res.data.message);
+} catch (err) {
+  console.error(err);
+
+  if (err.response) {
+    console.log(err.response.data);
+    setMessage(err.response.data.message);
+  } else {
+    setMessage(err.message);
+  }
+} finally {
+  setLoading(false);
+}
   };
 
   return (
@@ -18,22 +55,14 @@ function ResumeUpload() {
         </h2>
 
         <p className="text-gray-400 text-center mb-10">
-          Upload your resume and let HireMind AI create a personalized interview.
+          Upload your resume and let HireMind AI generate a personalized interview.
         </p>
 
-        <div className="bg-slate-800 border-2 border-dashed border-slate-600 rounded-2xl p-10 text-center hover:border-blue-500 transition">
+        <div className="bg-slate-800 border-2 border-dashed border-slate-600 rounded-2xl p-10 text-center">
 
           <div className="text-6xl mb-5">📄</div>
 
-          <h3 className="text-2xl font-semibold mb-4">
-            Drag & Drop Resume
-          </h3>
-
-          <p className="text-gray-400 mb-6">
-            or choose a PDF file from your computer
-          </p>
-
-          <label className="cursor-pointer bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-xl font-semibold transition">
+          <label className="cursor-pointer bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-xl font-semibold">
             Choose Resume
 
             <input
@@ -45,19 +74,28 @@ function ResumeUpload() {
           </label>
 
           {fileName && (
-            <div className="mt-8 bg-slate-700 rounded-xl p-4">
-              <p className="text-green-400 font-semibold">
+            <>
+              <p className="mt-6 text-green-400">
                 ✅ {fileName}
               </p>
 
-              <button className="mt-4 bg-green-500 hover:bg-green-600 px-6 py-2 rounded-lg font-semibold transition">
-                Analyze Resume
+              <button
+                onClick={uploadResume}
+                disabled={loading}
+                className="mt-6 bg-green-500 hover:bg-green-600 px-6 py-3 rounded-xl font-semibold"
+              >
+                {loading ? "Uploading..." : "🚀 Generate My Interview"}
               </button>
-            </div>
+            </>
+          )}
+
+          {message && (
+            <p className="mt-6 text-blue-400 font-semibold">
+              {message}
+            </p>
           )}
 
         </div>
-
       </div>
     </section>
   );
