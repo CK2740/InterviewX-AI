@@ -36,14 +36,17 @@
 
 
 🎯 How It Works
-User uploads resume
-AI analyzes skills and experience
-System generates interview questions
-User practices interview
-AI provides improvement feedback
+
+1.User uploads resume
+2.AI analyzes skills and experience
+3.System generates interview questions
+4.User practices interview
+5.AI provides improvement feedback
+
+
 🚀 Future Improvements
-Voice-based AI interviews
-Video interview analysis
-More AI career recommendations
-User dashboard
-Progress tracking
+1.Voice-based AI interviews
+2.Video interview analysis
+3.More AI career recommendations
+4.User dashboard
+5.Progress tracking
