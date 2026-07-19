@@ -6,7 +6,7 @@ import interviewRoutes from "./routes/interview.js";
 
 dotenv.config();
 
-console.log("ENV TEST:", process.env.GEMINI_API_KEY);
+console.log("GROQ exists:", !!process.env.GROQ_API_KEY);
 
 const app = express();
 
