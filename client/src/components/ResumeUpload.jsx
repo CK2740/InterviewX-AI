@@ -3,6 +3,7 @@ import ResumeAnalysis from "./ResumeAnalysis";
 import InterviewPanel from "./InterviewPanel";
 
 function ResumeUpload() {
+  console.log("API URL:", import.meta.env.VITE_API_URL);
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState("");
   const [analysis, setAnalysis] = useState(null);
@@ -33,7 +34,9 @@ function ResumeUpload() {
       setIsUploading(true);
       setMessage("Analyzing resume and preparing questions...");
 
-      const res = await fetch("http://localhost:5000/api/upload/upload-resume", {
+      const API_URL = import.meta.env.VITE_API_URL;
+
+      const res = await fetch(`${API_URL}/api/upload/upload-resume`, {
         method: "POST",
         body: formData,
       });
