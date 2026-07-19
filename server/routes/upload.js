@@ -1,5 +1,8 @@
 import express from "express";
 import multer from "multer";
+import fs from "fs";
+import pdfParse from "pdf-parse";
+import { analyzeResume } from "../utils/groq.js";
 
 const router = express.Router();
 
@@ -15,22 +18,39 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router.post("/upload-resume", upload.single("resume"), (req, res) => {
+router.post("/upload-resume", upload.single("resume"), async (req, res) => {
 
-  console.log(req.file);
+    try {
 
-  if (!req.file) {
-    return res.status(400).json({
-      success: false,
-      message: "No file uploaded",
+        if (!req.file) {
+            return res.status(400).json({
+                success: false,
+                message: "No file uploaded",
+            });
+        }
+
+        const dataBuffer = fs.readFileSync(req.file.path);
+
+        const pdfData = await pdfParse(dataBuffer);
+        const analysis = await analyzeResume(pdfData.text);
+
+       res.json({
+        success: true,
+        message: "Resume analyzed successfully!",
+        file: req.file.filename,
+        analysis: analysis
+       });
+
+    } catch(error){
+
+    console.error("PDF ERROR:", error);
+
+    res.status(500).json({
+        success:false,
+        message:error.message
     });
-  }
+    }
 
-  res.json({
-    success: true,
-    message: "Resume uploaded successfully!",
-    file: req.file.filename,
-  });
 });
 
 export default router;
