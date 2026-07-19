@@ -91,3 +91,23 @@ npm install
 npm start
 
 
+# Screenshots
+
+## Home Page
+
+![Home](./screenshots/home.png)
+
+## Resume Upload
+
+![Upload](./screenshots/upload.png)
+
+## AI Analysis
+
+![Analysis](./screenshots/analysis.png)
+
+## Dashboard
+
+![Analysis](./screenshots/dashboard.png)
+
+
+
