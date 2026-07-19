@@ -95,23 +95,30 @@ npm start
 
 ## Home Page
 
-![Home](./screenshots/home.png)
+![Home](./Screenshots/home.png)
 
 ## Resume Upload
 
-![Upload](./screenshots/upload.png)
+![Upload](./Screenshots/upload.png)
 
 ## AI Analysis
 
-![Analysis](./screenshots/analysis.png)
+![Analysis](./Screenshots/analysis.png)
 
-## Dashboard
+## Interview
 
-![Analysis](./screenshots/interview.png)
+![Interview](./Screenshots/interview.png)
 
-## Dashboard
+## Report
 
-![Analysis](./screenshots/report.png)
+![Report](./Screenshots/report.png)
+
+>>>>>>> 1f97504 (Update README with screenshots)
+
+=======
+
+=======
+>>>>>>> 1f97504 (Update README with screenshots)
 
 
 
