@@ -185,7 +185,9 @@ function InterviewPanel({ questions = [] }) {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/interview/evaluate", {
+      const API_URL = import.meta.env.VITE_API_URL;
+
+      const res = await fetch(`${API_URL}/api/interview/evaluate`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
