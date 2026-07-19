@@ -64,12 +64,15 @@
 
 ## ⚙️ Installation
 
+
 Clone the repository:
 
 ```bash
 git clone https://github.com/CK2740/InterviewX-AI.git
 
+
 Go to frontend:
+
 
 cd client
 
@@ -77,7 +80,9 @@ npm install
 
 npm start
 
+
 Go to backend:
+
 
 cd server
 
