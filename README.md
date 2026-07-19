@@ -70,26 +70,25 @@ Clone the repository:
 ```bash
 git clone https://github.com/CK2740/InterviewX-AI.git
 
+```
 
 Go to frontend:
 
-
+```bash
 cd client
-
 npm install
-
 npm start
 
+```
 
 Go to backend:
 
-
+```bash
 cd server
-
 npm install
-
 npm start
 
+```
 
 # Screenshots
 
@@ -112,13 +111,4 @@ npm start
 ## Report
 
 ![Report](./Screenshots/report.png)
-
->>>>>>> 1f97504 (Update README with screenshots)
-
-=======
-
-=======
->>>>>>> 1f97504 (Update README with screenshots)
-
-
 
