@@ -1,2 +1,3 @@
 server/uploads/*.pdf
 server/uploads/
+server/.env
