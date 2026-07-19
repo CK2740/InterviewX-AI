@@ -107,7 +107,11 @@ npm start
 
 ## Dashboard
 
-![Analysis](./screenshots/dashboard.png)
+![Analysis](./screenshots/interview.png)
+
+## Dashboard
+
+![Analysis](./screenshots/report.png)
 
 
 
